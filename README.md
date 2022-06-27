@@ -18,6 +18,7 @@ resource "vex_project" "app1" {
 }
 
 resource "vex_flag" "feature1" {
+  account_id = vex_account.main.id
   project_id = vex_project.app1.id
   key = "flag key"
   type = "flag type"
