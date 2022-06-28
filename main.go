@@ -18,7 +18,7 @@ func main() {
 	flag.BoolVar(&debug, "debug", false, "set to true to run the provider with support for debuggers like delve")
 	flag.Parse()
 	opts := providerserver.ServeOpts{
-		Address: "vex",
+		Address: "registry.terraform.io/broswen/vex",
 		Debug:   debug,
 	}
 	err := providerserver.Serve(context.Background(), vex.New(version), opts)

@@ -29,10 +29,12 @@ func (p *provider) GetSchema(_ context.Context) (tfsdk.Schema, diag.Diagnostics)
 	return tfsdk.Schema{
 		Attributes: map[string]tfsdk.Attribute{
 			"host": {
-				Type: types.StringType,
+				Type:     types.StringType,
+				Required: true,
 			},
 			"api_token": {
-				Type: types.StringType,
+				Type:     types.StringType,
+				Required: true,
 			},
 		},
 	}, nil
@@ -98,8 +100,8 @@ func (p *provider) Configure(ctx context.Context, req tfsdk.ConfigureProviderReq
 func (p *provider) GetResources(_ context.Context) (map[string]tfsdk.ResourceType, diag.Diagnostics) {
 	return map[string]tfsdk.ResourceType{
 		"vex_account": resourceAccountType{},
-		//"vex_project": resourceProjectType{},
-		//"vex_flag":    resourceFlagType{},
+		"vex_project": resourceProjectType{},
+		"vex_flag":    resourceFlagType{},
 	}, nil
 }
 
