@@ -2,6 +2,7 @@ package vex
 
 import (
 	"context"
+	vex_go "github.com/broswen/vex-go"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -22,16 +23,12 @@ type provider struct {
 	configured bool
 	version    string
 	apiToken   string
-	host       string
+	client     *vex_go.Client
 }
 
 func (p *provider) GetSchema(_ context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return tfsdk.Schema{
 		Attributes: map[string]tfsdk.Attribute{
-			"host": {
-				Type:     types.StringType,
-				Required: true,
-			},
 			"api_token": {
 				Type:     types.StringType,
 				Required: true,
@@ -43,7 +40,6 @@ func (p *provider) GetSchema(_ context.Context) (tfsdk.Schema, diag.Diagnostics)
 // Provider schema struct
 type providerData struct {
 	APIToken types.String `tfsdk:"api_token"`
-	Host     types.String `tfsdk:"host"`
 }
 
 func (p *provider) Configure(ctx context.Context, req tfsdk.ConfigureProviderRequest, resp *tfsdk.ConfigureProviderResponse) {
@@ -51,25 +47,6 @@ func (p *provider) Configure(ctx context.Context, req tfsdk.ConfigureProviderReq
 	diags := req.Config.Get(ctx, &config)
 	resp.Diagnostics.Append(diags...)
 	if resp.Diagnostics.HasError() {
-		return
-	}
-	var host string
-	if config.Host.Unknown {
-		resp.Diagnostics.AddError(
-			"Unable to create client",
-			"Cannot use unknown value as host")
-	}
-	if config.Host.Null {
-		host = os.Getenv("VEX_HOST")
-	} else {
-		host = config.Host.Value
-	}
-	if host == "" {
-		// Error vs warning - empty value must stop execution
-		resp.Diagnostics.AddError(
-			"Unable to find host",
-			"Host cannot be an empty string",
-		)
 		return
 	}
 	var apiToken string
@@ -91,7 +68,15 @@ func (p *provider) Configure(ctx context.Context, req tfsdk.ConfigureProviderReq
 		)
 		return
 	}
-	p.host = host
+	client, err := vex_go.New(apiToken)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			err.Error(),
+			err.Error(),
+		)
+		return
+	}
+	p.client = client
 	p.apiToken = apiToken
 	p.configured = true
 }
