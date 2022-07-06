@@ -3,10 +3,10 @@ cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMT
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
 github.com/apparentlymart/go-textseg v1.0.0/go.mod h1:z96Txxhf3xSFMPmb5X/1W05FF/Nj9VFpLOpjS5yuumk=
-github.com/broswen/vex-go v0.0.0-20220705044857-b2fc4668b001 h1:58rVVz93LkVOGAA3r1V7LITCQhn0RJN/9V4P4KWnV7w=
-github.com/broswen/vex-go v0.0.0-20220705044857-b2fc4668b001/go.mod h1:hxxnyaQ9vY53mA/DdsCccluocjQ/BI55H3qYmoVl4o4=
 github.com/broswen/vex-go v0.0.0-20220705052821-b02be64ad826 h1:HcaouuQ5F77wTxpQS+fVSPZkN35k4c03CXPHtIRv+Qk=
 github.com/broswen/vex-go v0.0.0-20220705052821-b02be64ad826/go.mod h1:hxxnyaQ9vY53mA/DdsCccluocjQ/BI55H3qYmoVl4o4=
+github.com/broswen/vex-go v0.0.0-20220706053712-cff665c748c2 h1:e4G0Te+JYP1yJs0AsdTEP+Xuglo8IxXeFKPBC+Q9cqU=
+github.com/broswen/vex-go v0.0.0-20220706053712-cff665c748c2/go.mod h1:hxxnyaQ9vY53mA/DdsCccluocjQ/BI55H3qYmoVl4o4=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/cespare/xxhash/v2 v2.1.1/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
