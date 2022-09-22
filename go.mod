@@ -1,9 +1,9 @@
 module github.com/broswen/terraform-provider-vex
 
-go 1.18
+go 1.19
 
 require (
-	github.com/broswen/vex-go v0.0.0-20220706053712-cff665c748c2
+	github.com/broswen/vex-go v0.0.0-20220922025822-1235684d7488
 	github.com/hashicorp/terraform-plugin-framework v0.9.0
 	github.com/hashicorp/terraform-plugin-log v0.4.1
 )
